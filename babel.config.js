@@ -14,7 +14,6 @@ module.exports = {
         lazy: true,
       },
     ],
-    ...// css-modules
     [
       'babel-plugin-react-css-modules',
       {
