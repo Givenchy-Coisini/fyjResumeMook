@@ -20,6 +20,18 @@
            loader: 'babel-loader',
          },
        },
+       {
+        test: /\.(jpg|png|jpeg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name]_[hash].[ext]',
+              outputPath: 'images/',
+            },
+          },
+        ],
+      },
      ],
    },
    plugins: [new CleanWebpackPlugin()],
