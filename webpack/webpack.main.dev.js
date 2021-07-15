@@ -2,20 +2,20 @@
  * 主进程配置
  */
 
-const path = require('path');
-const webpack = require('webpack');
-const baseConfig = require('./webpack.base.js');
-const webpackMerge = require('webpack-merge');
+import { resolve } from 'path';
+import webpack from 'webpack';
+import baseConfig from './webpack.base.js';
+import { merge } from 'webpack-merge';
 
 const mainConfig = {
-  entry: path.resolve(__dirname, '../app/main/electron.ts'),
+  entry: resolve(__dirname, '../app/main/electron.ts'),
   target: 'electron-main',
   output: {
     filename: 'electron.js',
-    path: path.resolve(__dirname, '../dist'),
+    path: resolve(__dirname, '../dist'),
   },
   devtool: 'inline-source-map',
   mode: 'development',
 };
 
-module.exports = webpackMerge.merge(baseConfig, mainConfig);
+export default merge(baseConfig, mainConfig);
