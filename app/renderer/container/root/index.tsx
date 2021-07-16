@@ -1,31 +1,42 @@
-// 首页模块的入口文件
 import React from 'react';
 import './index.less';
-import { useHistory } from 'react-router';
 import { shell } from 'electron';
-import Logo from '../../../../assets/logo.png';
+import { useHistory } from 'react-router';
+import Logo from '@assets/logo.png';
+import { ROUTER_ENTRY, ROUTER_KEY } from '@common/constants/router';
+import { isHttpOrHttpsUrl } from '@common/utils/router';
 
 function Root() {
   const history = useHistory();
-  const onRouterToLink = (text: string) => {
-    if (text !== '简历') {
-      // 通过 shell 模块，打开默认浏览器，进入 github
-      shell.openExternal('https://github.com/PDKSophia/visResumeMook');
+
+  const onRouterToLink = (router: TSRouter.Item) => {
+    if (isHttpOrHttpsUrl(router.url)) {
+      shell.openExternal(router.url);
     } else {
-      history.push('/resume');
+      if (router.key !== ROUTER_KEY.resume) {
+        history.push(router.url);
+      } else {
+        history.push(router.url);
+      }
     }
   };
   return (
     <div styleName="root">
       <div styleName="container">
         <img src={Logo} alt="" />
-        <div styleName="title">fyjResumeMook</div>
+        <div styleName="title">VisResumeMook</div>
         <div styleName="tips">一个模板简历制作平台, 让你的简历更加出众 ~</div>
         <div styleName="action">
-          {['介绍', '简历', '源码'].map((text, index) => {
+          {ROUTER_ENTRY.map((router: TSRouter.Item) => {
             return (
-              <div key={index} styleName="item" onClick={() => onRouterToLink(text)}>
-                {text}
+              <div
+                key={router.key}
+                styleName="item"
+                onClick={() => {
+                  onRouterToLink(router);
+                }}
+              >
+                {router.text}
               </div>
             );
           })}
@@ -33,7 +44,7 @@ function Root() {
         <div styleName="copyright">
           <div styleName="footer">
             <p styleName="copyright">
-              Copyright © 2020-{new Date().getFullYear()} All Rights Reserved. Copyright By fuyongjie
+              Copyright © 2018-{new Date().getFullYear()} All Rights Reserved. Copyright By pengdaokuan
             </p>
           </div>
         </div>
