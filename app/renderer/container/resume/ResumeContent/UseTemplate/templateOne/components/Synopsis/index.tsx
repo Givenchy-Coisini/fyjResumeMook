@@ -8,7 +8,7 @@ import './index.less';
 function Synopsis() {
   return (
     <div styleName="content">
-      <p styleName="name">彭道宽</p>
+      <p styleName="name">付永杰</p>
       <p styleName="job">前端工程师</p>
       <p styleName="summary">
         {[
