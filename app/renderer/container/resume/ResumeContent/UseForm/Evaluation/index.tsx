@@ -1,5 +1,5 @@
 /**
- * @description 荣誉证书Form
+ * @description 个人评价Form
  */
 import React from 'react';
 import './index.less';
@@ -12,12 +12,13 @@ interface IProps {
   onClose: () => void;
 }
 
-function Certificate({ onClose }: IProps) {
+function Evaluation({ onClose }: IProps) {
   const updateResumeHook = useUpdateResumeHook();
-  const certificate: string = useSelector((state: any) => state.resumeModel.certificate);
+  const evaluation: string = useSelector((state: any) => state.resumeModel.evaluation);
+
   return (
     <MyModal.Dialog
-      title="荣誉证书"
+      title="个人评价"
       showFooter={false}
       config={{
         cancelBtn: {
@@ -28,20 +29,20 @@ function Certificate({ onClose }: IProps) {
       <div styleName="form">
         <div styleName="flex">
           <div styleName="left">
-            <span styleName="require">*</span>证 书 ：
+            <span styleName="require">*</span>评 价 ：
           </div>
           <div styleName="right">
             <MyInput
               type="textarea"
               onChange={(e) => {
-                updateResumeHook<string>('certificate', e.target.value);
+                updateResumeHook<string>('evaluation', e.target.value);
               }}
               rows={5}
-              value={certificate || ''}
-              placeholder="互联网+大赛一等奖｜掘金大学骰王｜互联网喝酒大赛进步奖"
+              value={evaluation || ''}
+              placeholder="夸一夸自己有什么亮点"
               allowClear={true}
             />
-            <div styleName="tips"> * 多个证书以 | 分割</div>
+            <div styleName="tips"> * 可通过 | 分割</div>
           </div>
         </div>
       </div>
@@ -49,4 +50,4 @@ function Certificate({ onClose }: IProps) {
   );
 }
 
-export default Certificate;
+export default Evaluation;
