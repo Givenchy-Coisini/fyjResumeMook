@@ -48,7 +48,7 @@ const RESUME_TOOLBAR_LIST: TSResume.SliderItem[] = [
     key: RESUME_TOOLBAR_MAPS.projectExperience,
     name: '项目经验',
     summary: '展示研究过什么优秀项目和成果',
-    require: false,
+    require: true,
   },
   {
     key: RESUME_TOOLBAR_MAPS.workExperience,

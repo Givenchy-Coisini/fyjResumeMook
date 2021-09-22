@@ -10,6 +10,7 @@ import PersonalForm from './UseForm/Personal';
 import EvaluationForm from './UseForm/Evaluation';
 import SkillForm from './UseForm/Skill';
 import WorkForm from './UseForm/Work';
+import ProjectExperience from './UseForm/ProjectExperience';
 
 function ResumeContent() {
   const HEADER_ACTION_HEIGHT = 92;
@@ -49,6 +50,7 @@ function ResumeContent() {
           {formName === RESUME_TOOLBAR_MAPS.personal && <PersonalForm onClose={onClose} />}
           {formName === RESUME_TOOLBAR_MAPS.skill && <SkillForm onClose={onClose} />}
           {formName === RESUME_TOOLBAR_MAPS.workPrefer && <WorkForm onClose={onClose} />}
+          {formName === RESUME_TOOLBAR_MAPS.projectExperience && <ProjectExperience onClose={onClose} />}
         </>
       )}
     </MyScrollBox>
