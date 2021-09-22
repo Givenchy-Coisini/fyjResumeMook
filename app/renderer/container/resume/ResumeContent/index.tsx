@@ -7,6 +7,7 @@ import CertificateForm from './UseForm/Certificate';
 import ContactForm from './UseForm/Contact';
 import EducationForm from './UseForm/Education';
 import PersonalForm from './UseForm/Personal';
+import EvaluationForm from './UseForm/Evaluation';
 import SkillForm from './UseForm/Skill';
 import WorkForm from './UseForm/Work';
 
@@ -43,6 +44,7 @@ function ResumeContent() {
         <>
           {formName === RESUME_TOOLBAR_MAPS.certificate && <CertificateForm onClose={onClose} />}
           {formName === RESUME_TOOLBAR_MAPS.contact && <ContactForm onClose={onClose} />}
+          {formName === RESUME_TOOLBAR_MAPS.evaluation && <EvaluationForm onClose={onClose} />}
           {formName === RESUME_TOOLBAR_MAPS.education && <EducationForm onClose={onClose} />}
           {formName === RESUME_TOOLBAR_MAPS.personal && <PersonalForm onClose={onClose} />}
           {formName === RESUME_TOOLBAR_MAPS.skill && <SkillForm onClose={onClose} />}
