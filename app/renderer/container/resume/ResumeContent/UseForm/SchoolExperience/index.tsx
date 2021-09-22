@@ -1,5 +1,5 @@
 /**
- * @description 项目经验Form
+ * @description 个人信息Form
  */
 import React from 'react';
 import MyModal from '@common/components/MyModal';
@@ -12,19 +12,17 @@ import useUpdateResumeHook from '@src/container/resume/ResumeContent/useUpdateRe
 interface IProps {
   onClose: () => void;
 }
-function ProjectExperience({ onClose }: IProps) {
+function SchoolExperience({ onClose }: IProps) {
   const updateResumeHook = useUpdateResumeHook();
-  const projectExperience: TSResume.ProjectExperience[] = useSelector(
-    (state: any) => state.resumeModel.projectExperience
-  );
+  const schoolExperience: TSResume.SchoolExperience[] = useSelector((state: any) => state.resumeModel.schoolExperience);
 
   const updateDataList = (newDataList: AdapterExperienceType[]) => {
-    updateResumeHook<AdapterExperienceType[]>('projectExperience', newDataList);
+    updateResumeHook<AdapterExperienceType[]>('schoolExperience', newDataList);
   };
 
   return (
     <MyModal.Dialog
-      title="项目经验"
+      title="在校经验"
       showFooter={false}
       config={{
         cancelBtn: {
@@ -34,11 +32,11 @@ function ProjectExperience({ onClose }: IProps) {
       width={960}
       childStyle={{ padding: 0 }}
     >
-      <Wrapper dataList={AdapterExperience.project(projectExperience)} updateDataList={updateDataList}>
+      <Wrapper dataList={AdapterExperience.school(schoolExperience)} updateDataList={updateDataList}>
         <Form />
       </Wrapper>
     </MyModal.Dialog>
   );
 }
 
-export default ProjectExperience;
+export default SchoolExperience;

@@ -11,6 +11,8 @@ import EvaluationForm from './UseForm/Evaluation';
 import SkillForm from './UseForm/Skill';
 import WorkForm from './UseForm/Work';
 import ProjectExperience from './UseForm/ProjectExperience';
+import SchoolExperience from './UseForm/SchoolExperience';
+import WorkExperience from './UseForm/WorkExperience';
 
 function ResumeContent() {
   const HEADER_ACTION_HEIGHT = 92;
@@ -43,6 +45,8 @@ function ResumeContent() {
       <UseTemplateList.TemplateOne />
       {showFormModal && (
         <>
+          {formName === RESUME_TOOLBAR_MAPS.workExperience && <WorkExperience onClose={onClose} />}
+          {formName === RESUME_TOOLBAR_MAPS.schoolExperience && <SchoolExperience onClose={onClose} />}
           {formName === RESUME_TOOLBAR_MAPS.certificate && <CertificateForm onClose={onClose} />}
           {formName === RESUME_TOOLBAR_MAPS.contact && <ContactForm onClose={onClose} />}
           {formName === RESUME_TOOLBAR_MAPS.evaluation && <EvaluationForm onClose={onClose} />}
