@@ -1,17 +1,20 @@
 {
-  "name": "visResumeMook",
+  "name": "ResumeMook",
   "version": "0.0.1",
-  "author": "彭道宽",
+  "author": "付永杰",
   "description": "从0到1实现一款轻巧适用的简历平台桌面应用。",
-  "main": "./app/main/electron.js",
+  "main": "./dist/electron.js",
   "scripts": {
     "start:main": "webpack --config ./webpack/webpack.main.dev.js && electron ./dist/electron.js",
     "start:render": "webpack-dev-server --config ./webpack/webpack.render.dev.js",
-    "install:electron": "ELECTRON_MIRROR=https://cdn.npm.taobao.org/dist/electron/ npm install electron"
+    "install:electron": "ELECTRON_MIRROR=https://cdn.npm.taobao.org/dist/electron/ npm install electron",
+    "build:main": "webpack --config ./webpack/webpack.main.prod.js",
+    "build:render": "webpack --config ./webpack/webpack.render.prod.js",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
-    "electron": "^11.1.1",
     "html2canvas": "^1.3.2",
     "jspdf": "^2.4.0",
     "react": "^17.0.2",
@@ -21,7 +24,49 @@
     "react-router-dom": "^5.2.0",
     "redux": "^4.1.0"
   },
+  "build": {
+    "appId": "ResumeMook.ElectronReact",
+    "productName": "ResumeMook",
+    "copyright": "Copyright © 2021 ${author}",
+    "extends": null,
+    "files": [
+      "dist/**/*",
+      "package.json",
+      "node_modules/"
+    ],
+    "directories": {
+      "buildResources": "assets",
+      "output": "distAssets"
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "msi"
+      ]
+    }
+  },
   "devDependencies": {
+    "electron": "11.4.7",
     "@babel/cli": "^7.14.3",
     "@babel/core": "^7.14.3",
     "@babel/plugin-transform-modules-commonjs": "^7.14.0",
@@ -42,6 +87,7 @@
     "classnames": "^2.3.1",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "css-loader": "^3.0.0",
+    "electron-builder": "^22.11.7",
     "eslint": "^7.26.0",
     "eslint-config-alloy": "^4.1.0",
     "eslint-config-prettier": "^8.3.0",

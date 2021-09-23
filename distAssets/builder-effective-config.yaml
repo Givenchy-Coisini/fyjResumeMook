@@ -1,0 +1,29 @@
+directories:
+  output: distAssets
+  buildResources: assets
+appId: ResumeMook.ElectronReact
+productName: ResumeMook
+copyright: Copyright © 2021 ${author}
+extends: null
+files:
+  - filter:
+      - dist/**/*
+      - package.json
+      - node_modules/
+mac:
+  target:
+    - dmg
+    - zip
+dmg:
+  contents:
+    - x: 130
+      'y': 220
+    - x: 410
+      'y': 220
+      type: link
+      path: /Applications
+win:
+  target:
+    - nsis
+    - msi
+electronVersion: 11.4.7
