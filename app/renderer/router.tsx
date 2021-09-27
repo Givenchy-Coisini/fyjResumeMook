@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
 import Root from '@src/container/root';
 import Resume from '@src/container/resume';
 import TemplateList from '@src/container/templateList';
+import useReadDirAssetsTemplateHooks from './hooks/useReadDirAssetsTemplateHooks';
 import ROUTER from '@common/constants/router';
 
 function Router() {
+  const readDirAssetsTemplateHooks = useReadDirAssetsTemplateHooks();
+  useEffect(() => {
+    readDirAssetsTemplateHooks();
+  }, []);
   return (
     <HashRouter>
       <Switch>

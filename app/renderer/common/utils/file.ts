@@ -58,6 +58,14 @@ const fileAction = {
   canRead: (path: string): Promise<void> => {
     return fsPromiseAPIs.access(path, fs.constants.R_OK);
   },
+  /**
+   * @description 读取目录内容
+   * @param path 路径
+   * @returns  {Promise}
+   */
+  readDir: (path: string): Promise<string[]> => {
+    return fsPromiseAPIs.readdir(path);
+  },
 };
 
 export default fileAction;
