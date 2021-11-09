@@ -1,8 +1,13 @@
+/*
+ * @Description:
+ * @Author: pengdaokuan
+ * @LastEditors: pengdaokuan
+ * @Date: 2021-06-25 08:56:12
+ * @LastEditTime: 2021-06-25 09:10:36
+ */
 import React from 'react';
 import './index.less';
-// 👇 引入所有的静态模版
 import * as TemplateList from '@src/container/templates';
-// 👇 引入上边写好的 Footer 组件
 import Footer from '../Footer';
 import MyScrollBox from '@common/components/MyScrollBox';
 
@@ -13,7 +18,6 @@ function StaticResume() {
   return (
     <div styleName="container">
       <MyScrollBox maxHeight={height - HEADER_HEIGHT}>
-        {/* 这里暂时先写死第一个静态模版 */}
         <TemplateList.TemplateOne />
         <Footer />
       </MyScrollBox>
