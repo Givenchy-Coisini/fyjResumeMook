@@ -2,12 +2,15 @@ import React from 'react';
 import './index.less';
 import { shell } from 'electron';
 import { useHistory } from 'react-router';
+import MyTheme from '@common/components/MyTheme';
 import Logo from '@assets/logo.png';
 import { ROUTER_ENTRY, ROUTER_KEY } from '@common/constants/router';
+import useThemeActionHooks from '@src/hooks/useThemeActionHooks';
 import { isHttpOrHttpsUrl } from '@common/utils/router';
 
 function Root() {
   const history = useHistory();
+  const [currentTheme] = useThemeActionHooks.useGetCurrentTheme();
   const onRouterToLink = (router: TSRouter.Item) => {
     if (isHttpOrHttpsUrl(router.url)) {
       shell.openExternal(router.url);
@@ -25,6 +28,9 @@ function Root() {
         <img src={Logo} alt="" />
         <div styleName="title">fyjResumeMook</div>
         <div styleName="tips">一个模板简历制作平台, 让你的简历更加出众 ~</div>
+        <div styleName="theme">
+          <MyTheme />
+        </div>
         <div styleName="action">
           {ROUTER_ENTRY.map((router: TSRouter.Item) => {
             return (

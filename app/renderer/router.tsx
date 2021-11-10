@@ -4,11 +4,14 @@ import Root from '@src/container/root';
 import Resume from '@src/container/resume';
 import TemplateList from '@src/container/templateList';
 import useReadDirAssetsTemplateHooks from './hooks/useReadDirAssetsTemplateHooks';
+import useThemeActionHooks from './hooks/useThemeActionHooks';
 import ROUTER from '@common/constants/router';
 
 function Router() {
   const readDirAssetsTemplateHooks = useReadDirAssetsTemplateHooks();
+  const initThemeConfig = useThemeActionHooks.useInitThemeConfig();
   useEffect(() => {
+    initThemeConfig();
     readDirAssetsTemplateHooks();
   }, []);
   return (
