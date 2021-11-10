@@ -66,6 +66,9 @@ const fileAction = {
   readDir: (path: string): Promise<string[]> => {
     return fsPromiseAPIs.readdir(path);
   },
+  mkdirDir: (path: string): Promise<string | undefined> => {
+    return fsPromiseAPIs.mkdir(path, { recursive: true });
+  },
 };
 
 export default fileAction;
