@@ -1,16 +1,9 @@
-const path = require('path');
-const baseConfig = require('./webpack.base.js');
+/* eslint-disable @typescript-eslint/no-require-imports */
 const webpackMerge = require('webpack-merge');
+const mainBaseConfig = require('./webpack.main.base.js');
 
-const mainConfig = {
-  entry: path.resolve(__dirname, '../app/main/electron.ts'),
-  target: 'electron-main',
-  output: {
-    filename: 'electron.js',
-    path: path.resolve(__dirname, '../dist'),
-  },
-  devtool: 'inline-source-map',
+const devConfig = {
   mode: 'development',
 };
 
-module.exports = webpackMerge.merge(baseConfig, mainConfig);
+module.exports = webpackMerge.merge(mainBaseConfig, devConfig);

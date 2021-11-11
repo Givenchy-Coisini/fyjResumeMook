@@ -3,12 +3,13 @@
  */
 import path from 'path';
 import customMenu from './customMenu';
+import './userData';
 import { app, BrowserWindow, ipcMain, dialog, Menu } from 'electron';
 
 export interface MyBrowserWindow extends BrowserWindow {
   uid?: string;
 }
-function isDev() {
+export function isDev() {
   // 👉 还记得我们配置中通过 webpack.DefinePlugin 定义的构建变量吗
   return process.env.NODE_ENV === 'development';
 }
@@ -18,8 +19,9 @@ function createWindow() {
   const mainWindow: MyBrowserWindow = new BrowserWindow({
     width: 1200,
     height: 800,
+    resizable: isDev(),
     webPreferences: {
-      devTools: true,
+      devTools: isDev(),
       nodeIntegration: true,
     },
   });
@@ -29,15 +31,14 @@ function createWindow() {
   const settingWindow: MyBrowserWindow = new BrowserWindow({
     width: 720,
     height: 240,
-    resizable: false,
+    resizable: isDev(),
     show: false,
     frame: false,
     webPreferences: {
-      devTools: true,
+      devTools: isDev(),
       nodeIntegration: true,
     },
   });
-
   settingWindow.uid = 'settingWindow';
 
   if (isDev()) {
@@ -58,6 +59,10 @@ function createWindow() {
       settingWindow.minimize();
     }
   });
+  const ROOT_PATH = path.join(app.getAppPath(), '../');
+  ipcMain.on('get-root-path', (event, arg) => {
+    event.reply('reply-root-path', isDev() ? ROOT_PATH : __dirname);
+  });
 }
 
 app.whenReady().then(() => {
@@ -70,12 +75,6 @@ app.whenReady().then(() => {
 app.on('ready', () => {
   const menu = Menu.buildFromTemplate(customMenu);
   Menu.setApplicationMenu(menu);
-});
-
-const ROOT_PATH = path.join(app.getAppPath(), '../');
-
-ipcMain.on('get-root-path', (event, arg) => {
-  event.reply('reply-root-path', ROOT_PATH);
 });
 
 // 应用设置，保存自定义存储路径
