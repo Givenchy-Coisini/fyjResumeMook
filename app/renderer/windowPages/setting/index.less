@@ -1,4 +1,36 @@
 .container {
+  .menu {
+    height: 28px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 4px 4px 0 0;
+    padding: 0 16px;
+    position: relative;
+    .hide {
+      position: absolute;
+      top: 6px;
+      text-align: center;
+      left: 16px;
+      width: 16px;
+      height: 16px;
+      font-size: 12px;
+      border-radius: 50%;
+      background-color: tomato;
+      border: 1px solid rgba(0, 0, 0, 0.07);
+    }
+    .min {
+      position: absolute;
+      top: 6px;
+      text-align: center;
+      left: 40px;
+      width: 16px;
+      height: 16px;
+      font-size: 12px;
+      border-radius: 50%;
+      background-color: #fad664;
+      border: 1px solid rgba(0, 0, 0, 0.07);
+    }
+  }
+  .content {
     padding: 12px 16px;
     .label {
       font-weight: 700;
@@ -41,4 +73,4 @@
       }
     }
   }
-  
+}
