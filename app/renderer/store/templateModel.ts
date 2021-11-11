@@ -1,5 +1,10 @@
-//  renderer/store/templateModel.ts
-
+/*
+ * @Description:
+ * @Author: pengdaokuan
+ * @LastEditors: pengdaokuan
+ * @Date: 2021-06-25 08:56:12
+ * @LastEditTime: 2021-07-10 17:07:49
+ */
 export interface TStore {
   /**
    * @description 选中工具条模块的keys
@@ -25,6 +30,7 @@ const templateModel: TSRcReduxModel.Props<TStore> = {
       templateId: '',
       templateName: '',
       templateCover: '',
+      templateIndex: -1,
     },
   },
 };

@@ -12,5 +12,9 @@ declare namespace TSTemplate {
      * @description 模版封面
      */
     templateCover: string;
+    /**
+     * @description 模版下标
+     */
+    templateIndex: number;
   }
 }

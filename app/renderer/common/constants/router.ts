@@ -1,7 +1,7 @@
 // 模块路径
 const ROUTER = {
   root: '/',
-  resume: '/resume',
+  resume: '/resume/:fromPath/:templateId/:templateIndex',
   templateList: '/templateList',
 };
 export default ROUTER;
